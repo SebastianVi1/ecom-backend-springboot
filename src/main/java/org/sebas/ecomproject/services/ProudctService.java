@@ -15,7 +15,10 @@ public class ProudctService {
 
 
     public List<Product> getAllProducts(){
-
         return repo.findAll();
+    }
+
+    public Product getProductById(int id) {
+        return repo.findById(id).get();
     }
 }

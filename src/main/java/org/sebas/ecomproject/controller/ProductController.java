@@ -3,10 +3,7 @@ package org.sebas.ecomproject.controller;
 import org.sebas.ecomproject.models.Product;
 import org.sebas.ecomproject.services.ProudctService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +15,15 @@ public class ProductController {
     @Autowired
     private ProudctService service;
 
-    @RequestMapping("/")
-    public String greet(){
-        return "Hello World";
-    }
 
     @GetMapping("/products")
     public List<Product> getAllProducts(){
         return service.getAllProducts();
     }
+
+    @GetMapping("/products/{id}")
+    public Product getProductById(@PathVariable String id){
+        return service.getProductById(Integer.parseInt(id));
+    }
+
 }
